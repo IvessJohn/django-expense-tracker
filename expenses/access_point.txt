@@ -1,0 +1,3 @@
+cd C:\Users\Ivan\source\repos\Python\Django\ExpenseTracker\expenses
+
+python manage.py runserver
