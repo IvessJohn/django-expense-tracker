@@ -1,1 +1,27 @@
 <h3>Main page</h3>
+
+<div class="col-md-7">
+    <h5>EXPENSES</h5>
+    <hr>
+    <div class="card card-body">
+        <table class="table table">
+            <tr>
+                <th>Name</th>
+                <th>Cost</th>
+                <th>Tag</th>
+                <th>Date</th>
+                <th>Note</th>
+            </tr>
+
+            {% for expense in expenses %}
+            <tr>
+                <th>{{expense.name}}</th>
+                <th>{{expense.cost_dollars}}</th>
+                <th>{{expense.tag}}</th>
+                <th>{{expense.transaction_date}}</th>
+                <th>{{expense.note}}</th>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
