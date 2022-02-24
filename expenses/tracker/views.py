@@ -66,13 +66,22 @@ def expense_info(request, expense_id: int):
         if expense_full_form.is_valid():
             expense_full_form.save()
         return redirect('/')
-    # Remove the expense
-    if request.method == "DELETE":
-        expense.delete()
-        return redirect('/')
 
     context = {
         'expense': expense,
         'expense_full_form': expense_full_form,
     }
     return render(request, 'tracker/expense_info.html', context)
+
+def expense_delete(request, expense_id: int):
+    expense: Expense = Expense.objects.get(id=expense_id)
+
+    # Remove the expense
+    if request.method == "POST":
+        expense.delete()
+        return redirect('/')
+
+    context = {
+        'expense': expense,
+    }
+    return render(request, 'tracker/expense_delete.html', context)

@@ -23,10 +23,7 @@
 			<input class="btn btn-primary" type="submit" value="Update Information">
 			</form>
 
-			<form method="DELETE" action="{% url 'home' %}">
-				{% csrf_token %}
-				<input class="btn btn-sm btn-danger" type="submit" value="Delete Expense">
-			</form>
+			<a class="btn btn-sm btn-danger" href="{% url 'expense_delete' expense.id %}">Delete Expense</a>
 
             {% for message in messages %}
                 <p id="message">{{message}}</p>
