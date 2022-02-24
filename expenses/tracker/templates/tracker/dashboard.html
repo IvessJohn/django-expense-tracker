@@ -6,19 +6,17 @@
     <div class="card card-body">
         <table class="table table">
             <tr>
-                <th>Name</th>
+                <th>Date</th>
                 <th>Cost</th>
                 <th>Tag</th>
-                <th>Date</th>
                 <th>Note</th>
             </tr>
 
             {% for expense in expenses %}
             <tr>
-                <th>{{expense.name}}</th>
-                <th>{{expense.cost_dollars}}</th>
-                <th>{{expense.tag}}</th>
                 <th>{{expense.transaction_date}}</th>
+                <th>${{expense.cost_dollars}}</th>
+                <th>{{expense.tag}}</th>
                 <th>{{expense.note}}</th>
             </tr>
             {% endfor %}

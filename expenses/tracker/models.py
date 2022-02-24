@@ -19,7 +19,6 @@ class Expense(models.Model):
         ('Other', 'Other'),
      )
 
-    name: models.CharField = models.CharField(max_length=96, null=False, blank=True, unique=False)
     cost_dollars: models.DecimalField = models.DecimalField(max_digits=9, decimal_places=2)
     tag: models.CharField = models.CharField(max_length=50, null=True, blank=True, choices=EXPENSES)
     note: models.CharField = models.CharField(max_length=500, null=False, blank=True, unique=False)
