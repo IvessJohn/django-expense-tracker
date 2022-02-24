@@ -12,7 +12,8 @@ class ExpenseShortForm(ModelForm):
     class Meta:
         model = Expense
         fields = '__all__'
-        exclude = ['note', 'transaction_date']
+        #exclude = ['note', 'transaction_date']
+        exclude = ['transaction_date']
 
 class ExpenseFullForm(ModelForm):
     """A form for adding expense logs via a dedicated expense add page.

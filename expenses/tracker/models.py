@@ -1,5 +1,4 @@
 from datetime import datetime
-from unicodedata import name
 from django.db import models
 
 
@@ -25,6 +24,6 @@ class Expense(models.Model):
     transaction_date: models.DateTimeField = models.DateTimeField(default=datetime.today, blank=False)
 
     def __str__(self) -> str:
-        if self.name != '':
-            return self.name
+        if self.note != '':
+            return self.note
         return f'Expense({self.id})'

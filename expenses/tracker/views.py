@@ -1,5 +1,7 @@
-from typing import List
-from django.http import QueryDict
+"""Define all the views here."""
+from calendar import month
+from datetime import datetime
+from django.http import QueryDict, HttpResponse
 from django.shortcuts import render, redirect
 
 from .models import Expense
@@ -7,19 +9,30 @@ from .forms import ExpenseFullForm, ExpenseShortForm
 # Create your views here.
 
 def dashboard(request):
-    expenses = Expense.objects.all()
+    expenses = Expense.objects.all().order_by('-transaction_date')
+    # Expenses this year
+    expenses_this_year = expenses.filter(transaction_date__date__year=datetime.now().year)
+    total_this_year = sum(expense.cost_dollars for expense in expenses_this_year)
+    # Expenses this year
+    expenses_this_month = expenses.filter(transaction_date__date__month=datetime.now().month)
+    total_this_month = sum(expense.cost_dollars for expense in expenses_this_month)
+
     expense_short_form: ExpenseShortForm = ExpenseShortForm()
 
     # Shorthand expense addition
-    if request.method == "post":
-        expense_short_form = ExpenseFullForm(request.post)
+    if request.method == "POST":
+        expense_short_form = ExpenseShortForm(request.POST)
         if expense_short_form.is_valid():
             expense_short_form.save()
         return redirect('/')
 
     context = {
         'expenses': expenses,
+        'expenses_this_year': expenses_this_year,
+        'expenses_this_month': expenses_this_month,
         'expense_short_form': expense_short_form,
+        'total_this_year': total_this_year,
+        'total_this_month': total_this_month,
     }
     return render(request, 'tracker/dashboard.html', context)
 
@@ -34,13 +47,13 @@ def expense_info(request, expense_id: int):
     expense_full_form: ExpenseFullForm  = ExpenseFullForm(instance=expense)
 
     # Update the expense
-    if request.method == "post_update":
-        expense_full_form = ExpenseFullForm(request.post, instance=expense)
+    if request.method == "POST_update":
+        expense_full_form = ExpenseFullForm(request.POST_update, instance=expense)
         if expense_full_form.is_valid():
             expense_full_form.save()
         return redirect('expense/<str:expense_id>/')
     # Remove the expense
-    if request.method == "post_remove":
+    if request.method == "POST_remove":
         expense.delete()
         return redirect('/')
 
@@ -53,10 +66,11 @@ def expense_info(request, expense_id: int):
 def add_expense_full_form(request):
     expense_full_form: ExpenseFullForm = ExpenseFullForm()
 
-    if request.method == "post":
-        expense_full_form = ExpenseFullForm(request.post)
+    if request.method == "POST":
+        expense_full_form = ExpenseFullForm(request.POST)
         if expense_full_form.is_valid():
             expense_full_form.save()
+        return redirect('/')
 
     context = {
         'expense_full_form': expense_full_form,

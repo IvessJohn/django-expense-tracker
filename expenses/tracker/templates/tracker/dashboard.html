@@ -1,7 +1,15 @@
-<h3>Main page</h3>
+<h1><center>John Ivess's Expense Tracker</center></h1>
+<form action="" method="POST">
+    {% csrf_token %}
+    {{expense_short_form}}
+    <input class="btn btn-info" type="submit" value="Add Expense">
+</form>
+
+<h4>Total this year: ${{total_this_year}}</h4>
+<h4>Total this month: ${{total_this_month}}</h4>
 
 <div class="col-md-7">
-    <h5>EXPENSES</h5>
+    <h5>EXPENSES THIS MONTH</h5>
     <hr>
     <div class="card card-body">
         <table class="table table">
@@ -12,7 +20,7 @@
                 <th>Note</th>
             </tr>
 
-            {% for expense in expenses %}
+            {% for expense in expenses_this_month %}
             <tr>
                 <th>{{expense.transaction_date}}</th>
                 <th>${{expense.cost_dollars}}</th>
