@@ -20,7 +20,7 @@ class Expense(models.Model):
 
     cost_dollars: models.DecimalField = models.DecimalField(max_digits=9, decimal_places=2)
     tag: models.CharField = models.CharField(max_length=50, null=True, blank=True, choices=EXPENSES)
-    note: models.CharField = models.CharField(max_length=500, null=False, blank=True, unique=False)
+    note: models.CharField = models.CharField(max_length=500, null=False, blank=False, default='...', unique=False)
     transaction_date: models.DateTimeField = models.DateTimeField(default=datetime.today, blank=False)
 
     def __str__(self) -> str:

@@ -1,33 +1,57 @@
-<h1><center>John Ivess's Expense Tracker</center></h1>
-<form action="" method="POST">
-    {% csrf_token %}
-    {{expense_short_form}}
-    <input class="btn btn-info" type="submit" value="Add Expense">
-</form>
+{% extends 'tracker/main.html' %}
 
-<h4>Total this year: ${{total_this_year}}</h4>
-<h4>Total this month: ${{total_this_month}}</h4>
+{% block content %}
 
-<div class="col-md-7">
-    <h5>EXPENSES THIS MONTH</h5>
-    <hr>
-    <div class="card card-body">
-        <table class="table table">
-            <tr>
-                <th>Date</th>
-                <th>Cost</th>
-                <th>Tag</th>
-                <th>Note</th>
-            </tr>
+<div class="center-column">
+    <h1><center>John Ivess's Expense Tracker</center></h1>
 
-            {% for expense in expenses_this_month %}
-            <tr>
-                <th>{{expense.transaction_date}}</th>
-                <th>${{expense.cost_dollars}}</th>
-                <th>{{expense.tag}}</th>
-                <th><a href="{% url 'expense_info' expense.id %}">{{expense.note}}</a></th>
-            </tr>
-            {% endfor %}
-        </table>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="card card-body">
+            <table class="table">
+                    <tr>
+                        <th>Cost in USD</th>
+                        <th>Tag</th>
+                        <th>Note</th>
+                    </tr>
+                    <tr>
+                        <td>{{expense_short_form.cost_dollars}}</td>
+                        <td>{{expense_short_form.tag}}</td>
+                        <td>{{expense_short_form.note}}</td>
+                    </tr>
+            </table>
+            <input class="btn btn-info" type="submit" value="Add Expense">
+        </div>
+    </form>
+
+    <br />
+    <h4>Total this year: ${{total_this_year}}</h4>
+    <h4>Total this month: ${{total_this_month}}</h4>
+    <br />
+
+    <div class="col-md-12">
+        <h5>EXPENSES THIS MONTH</h5>
+        <hr>
+        <div class="card card-body">
+            <table class="table table">
+                <tr>
+                    <th>Date</th>
+                    <th>Cost</th>
+                    <th>Tag</th>
+                    <th>Note</th>
+                </tr>
+
+                {% for expense in expenses_this_month %}
+                <tr>
+                    <td><a href="{% url 'expense_info' expense.id %}">{{expense.transaction_date}}</a></td>
+                    <td>${{expense.cost_dollars}}</td>
+                    <td>{{expense.tag}}</td>
+                    <td>{{expense.note}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </div>
 </div>
+
+{% endblock %}
