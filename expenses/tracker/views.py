@@ -42,27 +42,6 @@ def about(request):
     }
     return render(request, 'tracker/about.html', context)
 
-def expense_info(request, expense_id: int):
-    expense: Expense = Expense.objects.get(id=expense_id)
-    expense_full_form: ExpenseFullForm  = ExpenseFullForm(instance=expense)
-
-    # Update the expense
-    if request.method == "POST_update":
-        expense_full_form = ExpenseFullForm(request.POST_update, instance=expense)
-        if expense_full_form.is_valid():
-            expense_full_form.save()
-        return redirect('expense/<str:expense_id>/')
-    # Remove the expense
-    if request.method == "POST_remove":
-        expense.delete()
-        return redirect('/')
-
-    context = {
-        'expense': expense,
-        'expense_full_form': expense_full_form,
-    }
-    return render(request, 'tracker/expense_info.html', context)
-
 def add_expense_full_form(request):
     expense_full_form: ExpenseFullForm = ExpenseFullForm()
 
@@ -76,3 +55,24 @@ def add_expense_full_form(request):
         'expense_full_form': expense_full_form,
     }
     return render(request, 'tracker/add_expense_full_form.html', context)
+
+def expense_info(request, expense_id: int):
+    expense: Expense = Expense.objects.get(id=expense_id)
+    expense_full_form: ExpenseFullForm  = ExpenseFullForm(instance=expense)
+
+    # Update the expense
+    if request.method == "POST":
+        expense_full_form = ExpenseFullForm(request.POST, instance=expense)
+        if expense_full_form.is_valid():
+            expense_full_form.save()
+        return redirect('/')
+    # Remove the expense
+    if request.method == "DELETE":
+        expense.delete()
+        return redirect('/')
+
+    context = {
+        'expense': expense,
+        'expense_full_form': expense_full_form,
+    }
+    return render(request, 'tracker/expense_info.html', context)

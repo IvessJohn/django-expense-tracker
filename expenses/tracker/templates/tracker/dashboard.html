@@ -25,7 +25,7 @@
                 <th>{{expense.transaction_date}}</th>
                 <th>${{expense.cost_dollars}}</th>
                 <th>{{expense.tag}}</th>
-                <th>{{expense.note}}</th>
+                <th><a href="{% url 'expense_info' expense.id %}">{{expense.note}}</a></th>
             </tr>
             {% endfor %}
         </table>

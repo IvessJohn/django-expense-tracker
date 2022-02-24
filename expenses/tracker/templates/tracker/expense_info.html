@@ -1,8 +1,6 @@
-{% extends 'accounts/main.html' %}
+{% extends 'tracker/main.html' %}
 
 {% block content %}
-
-<h3>Expense info</h3>
 
 <br>
 <div class="row">
@@ -10,7 +8,7 @@
 		<div class="card card-body">
 			<a class="btn btn-warning" href="{% url 'home' %}"> &#8592; Back to Profile</a>
 			<hr>
-			<h3 style="text-align: center">Account Settings</h3>
+			<h3 style="text-align: center">Expense info</h3>
 			<hr>
 
 		</div>
@@ -18,10 +16,15 @@
 	<div class="col-md-9">
 		<div class="card card-body">
 			
-			<form method="POST" action="" enctype="multipart/form-data">
+			<form method="POST" action="">
 				{% csrf_token %}
+				{{expense_full_form.as_p}}
 		
-			<input class="btn btn-primary" type="submit" name="Update Information">
+			<input class="btn btn-primary" type="submit" value="Update Information">
+			</form>
+
+			<form method="DELETE" action="/">
+				<input class="btn btn-sm btn-danger" type="submit" value="Delete Expense">
 			</form>
 
             {% for message in messages %}
