@@ -23,7 +23,8 @@
 			<input class="btn btn-primary" type="submit" value="Update Information">
 			</form>
 
-			<form method="DELETE" action="/">
+			<form method="DELETE" action="{% url 'home' %}">
+				{% csrf_token %}
 				<input class="btn btn-sm btn-danger" type="submit" value="Delete Expense">
 			</form>
 
