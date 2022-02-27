@@ -17,6 +17,6 @@ Every expense instance contains this information:
 
 Main page look:
 ![Main page look](publicity/screenshots/scr_main.jpg)
-![Demo video](publicity/demo.mp4)
+![Demo GIF](publicity/demo.gif)
 ---
 **Used tools**: Django, Python.
