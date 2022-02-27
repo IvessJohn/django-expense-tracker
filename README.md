@@ -16,6 +16,7 @@ Every expense instance contains this information:
 - Note (optional)
 
 Main page look:
-![Main page look](publicity/screenshots/scr_main.png)
+![Main page look](publicity/screenshots/scr_main.jpg)
+![Demo video](publicity/demo.mp4)
 ---
 **Used tools**: Django, Python.
