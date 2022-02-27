@@ -15,8 +15,9 @@ Every expense instance contains this information:
 - Category/Tag
 - Note (optional)
 
-Main page look:
 ![Demo GIF](publicity/demo.gif)
-_You can see more demo materials in [publicity/](publicity/) directory_
+
+_*You can see more demo materials in [publicity/](publicity/) directory_
+
 ---
 **Used tools**: Django, Python.
