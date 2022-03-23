@@ -1,37 +1,32 @@
-{% extends 'tracker/main.html' %}
-
-{% block content %}
+{% extends 'tracker/main.html' %} {% block content %}
 
 <style>
-	.expense-col{
-		width:500px;
-		margin: auto;
-		padding:25px;
-		background-color: #fff;
-		border-radius: 3px;
-		box-shadow: 6px 2px 30px 0px rgba(0,0,0,0.75);
-	}
+    .expense-col {
+        width: 500px;
+        margin: auto;
+        padding: 25px;
+        background-color: #fff;
+        border-radius: 3px;
+        box-shadow: 6px 2px 30px 0px rgba(0, 0, 0, 0.75);
+    }
 </style>
 
 <br>
 <div class="expense-col">
-	<div class="card card-body">
-		<center>
-			
-			<form method="POST" action="">
-				{% csrf_token %}
-				{{expense_full_form.as_p}}
-		
-			<input class="btn btn-primary" type="submit" value="Update Information">
-			</form>
+    <div class="card card-body">
+        <center>
 
-			<a class="btn btn-sm btn-danger" href="{% url 'expense_delete' expense.id %}">Delete Expense</a>
+            <form method="POST" action="">
+                {% csrf_token %} {{expense_full_form.as_p}}
 
-			{% for message in messages %}
-				<p id="message">{{message}}</p>
-			{% endfor %}
-		</center>
-	</div>
+                <input class="btn btn-primary" type="submit" value="Update Information">
+            </form>
+
+            <a class="btn btn-sm btn-danger" href="{% url 'expense_delete' expense.id %}">Delete Expense</a> {% for message in messages %}
+            <p id="message">{{message}}</p>
+            {% endfor %}
+        </center>
+    </div>
 </div>
 
 {% endblock %}

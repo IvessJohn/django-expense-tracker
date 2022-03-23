@@ -1,8 +1,7 @@
 <h3>Add Expense full form</h3>
 
 <form action="" method="POST">
-    {% csrf_token %}
-    {{expense_full_form.as_p}}
+    {% csrf_token %} {{expense_full_form.as_p}}
 
     <input type="submit" name="Add Expense" value="Add Expense">
 </form>

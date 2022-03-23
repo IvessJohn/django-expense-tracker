@@ -1,8 +1,4 @@
-{% extends 'tracker/main.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends 'tracker/main.html' %} {% load static %} {% block content %}
 
 <br>
 <div class="row">
@@ -10,15 +6,17 @@
         <div class="card card-body">
 
             <p>Are you sure you want to delete "{{expense}}"?</p>
-            
+
             <form action="{% url 'expense_delete' expense.id %}" method="POST">
                 {% csrf_token %}
-                
+
+                <!-- Cancel -->
                 <a class="btn btn-warning" href="{% url 'home' %}">Cancel</a>
-            
+
+                <!-- Confirm -->
                 <input class="btn btn-danger" type="submit" name="Confirm">
             </form>
-            
+
         </div>
     </div>
 </div>

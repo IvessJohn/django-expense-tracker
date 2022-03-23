@@ -1,39 +1,45 @@
-{% extends 'tracker/main.html' %}
-
-{% block content %}
+{% extends 'tracker/main.html' %} {% block content %}
 
 <div class="center-column">
-    <h1><center>John Ivess's Expense Tracker</center></h1>
+    <h1>
+        <center>John Ivess's Expense Tracker</center>
+    </h1>
 
+    <!-- #region The shortcut expense addition interface -->
     <form action="" method="POST">
         {% csrf_token %}
         <div class="card card-body">
             <table class="table">
-                    <tr>
-                        <th>Cost in USD</th>
-                        <th>Tag</th>
-                        <th>Note</th>
-                    </tr>
-                    <tr>
-                        <td>{{expense_short_form.cost_dollars}}</td>
-                        <td>{{expense_short_form.tag}}</td>
-                        <td>{{expense_short_form.note}}</td>
-                    </tr>
+                <tr>
+                    <th>Cost in USD</th>
+                    <th>Tag</th>
+                    <th>Note</th>
+                </tr>
+                <tr>
+                    <td>{{expense_short_form.cost_dollars}}</td>
+                    <td>{{expense_short_form.tag}}</td>
+                    <td>{{expense_short_form.note}}</td>
+                </tr>
             </table>
             <input class="btn btn-info" type="submit" value="Add Expense">
         </div>
     </form>
 
+    <!-- #endregion -->
+
+    <!-- Totals -->
     <br />
     <h4>Total this year: ${{total_this_year}}</h4>
     <h4>Total this month: ${{total_this_month}}</h4>
     <br />
 
+    <!-- The main table containing the Expenses themselves-->
     <div class="col-md-12">
         <h5>EXPENSES THIS MONTH</h5>
         <hr>
         <div class="card card-body">
             <table class="table table">
+                <!-- Headlines -->
                 <tr>
                     <th>Date</th>
                     <th>Cost</th>
@@ -41,6 +47,7 @@
                     <th>Note</th>
                 </tr>
 
+                <!-- Render every expense for the past month -->
                 {% for expense in expenses_this_month %}
                 <tr>
                     <td><a href="{% url 'expense_info' expense.id %}">{{expense.transaction_date}}</a></td>
