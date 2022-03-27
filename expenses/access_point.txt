@@ -1,3 +1,4 @@
-cd C:\Users\Ivan\source\repos\Python\Django\ExpenseTracker\expenses
+cd C:\Users\Ivan\source\repos\Python\Django\django-expense-tracker-deploy
+cd expenses
 
 python manage.py runserver
