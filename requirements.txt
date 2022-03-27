@@ -89,7 +89,6 @@ pipenv==2022.1.8
   virtualenv-clone==0.5.7
 pipreqs==0.4.11
   docopt==0.6.2
-  yarg==0.1.9
     requests==2.27.1
       certifi==2021.10.8
       charset-normalizer==2.0.12
