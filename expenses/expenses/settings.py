@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-n7ab(ne4r+wv354njlspghqp!yrxnuob=l1hsl53!$rw8t#-y*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['ivess-expensetracker.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['ivess-expensetracker.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -44,9 +44,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
