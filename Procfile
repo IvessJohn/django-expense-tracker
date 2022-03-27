@@ -1,0 +1,1 @@
+web: gunicorn ivess-expensetracker.wsgi --log-file -
