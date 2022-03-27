@@ -1,3 +1,6 @@
 expenses/expenses/settings.py
 .vscode/
 expenses/access_point.txt
+expenses/tracker/__pycache__/
+expenses/expenses/__pycache__/
+expenses/tracker/migrations/__pycache__/
