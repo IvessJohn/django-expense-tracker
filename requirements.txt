@@ -55,12 +55,8 @@ gunicorn==20.1.0
 icmplib==3.0.3
 impacket==0.9.23
   chardet==4.0.0
-  Flask==2.0.3
     click==8.0.4
       colorama==0.4.4
-    itsdangerous==2.1.1
-    Jinja2==3.0.3
-      MarkupSafe==2.1.1
     Werkzeug==2.0.3
   future==0.18.2
   ldap3==2.9.1
@@ -100,17 +96,6 @@ pipreqs==0.4.11
       idna==3.3
       urllib3==1.26.8
 psutil==5.9.0
-PyRoxy==1.0b5
-  maxminddb==2.2.0
-  PySocks==1.7.1
-  requests==2.27.1
-    certifi==2021.10.8
-    charset-normalizer==2.0.12
-    idna==3.3
-    urllib3==1.26.8
-  yarl==1.7.2
-    idna==3.3
-    multidict==6.0.2
 pytest==6.2.5
   atomicwrites==1.4.0
   attrs==21.4.0
