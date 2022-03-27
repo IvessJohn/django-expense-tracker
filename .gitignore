@@ -1,4 +1,3 @@
-expenses/expenses/settings.py
 .vscode/
 expenses/access_point.txt
 expenses/tracker/__pycache__/
