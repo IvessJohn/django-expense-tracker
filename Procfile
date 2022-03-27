@@ -1,1 +1,1 @@
-web: gunicorn expenses.wsgi
+web: gunicorn expenses.expenses.wsgi
