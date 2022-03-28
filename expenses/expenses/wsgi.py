@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/howto/deployment/wsgi/
 
 import os
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'expenses.expenses.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'expenses.settings')
 
 from django.core.wsgi import get_wsgi_application
 
