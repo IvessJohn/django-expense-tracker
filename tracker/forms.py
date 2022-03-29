@@ -1,6 +1,8 @@
 """Interface for sending forms via the website."""
 from django import forms
 from django.forms import ModelForm
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 from .models import Expense
 
@@ -25,4 +27,13 @@ class ExpenseFullForm(ModelForm):
     class Meta:
         model = Expense
         fields = "__all__"
+        exclude = []
+
+
+class RegisterForm(UserCreationForm):
+    """A custom form for user creation."""
+
+    class Meta:
+        model = User
+        fields = ["username", "email", "password1", "password2"]
         exclude = []

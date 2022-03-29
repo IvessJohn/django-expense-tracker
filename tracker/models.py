@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -17,7 +18,9 @@ class Expense(models.Model):
         ("Education", "Education"),
         ("Other", "Other"),
     )
-
+    owner: models.ForeignKey = models.ForeignKey(
+        User, null=True, blank=True, on_delete=models.CASCADE
+    )
     cost_dollars: models.DecimalField = models.DecimalField(
         max_digits=9, decimal_places=2
     )
