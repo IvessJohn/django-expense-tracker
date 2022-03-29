@@ -1,1 +1,28 @@
-<h3>About page</h3>
+{% extends 'tracker/main.html' %} {% block content %}
+
+<div class="center-column">
+    <h2>
+        <center>About</center>
+    </h2>
+    <div>
+        <p>This Expense Tracker web application was developed by <a href="https://twitter.com/ivess_john">John Ivess</a> as a part of his project-based learning mode.</p>
+
+        <h3>Expense Tracker links:</h3>
+        <ul>
+            <li><a href="https://ivess-expensetracker.herokuapp.com/">Expense Tracker website</a> (hosted by Heroku)</li>
+            <li><a href="https://github.com/IvessJohn/django-expense-tracker">Github Repository</a></li>
+        </ul>
+
+        <h4>Tools Used:</h4>
+        <pre>Django<br>Python<br>HTML</br>
+        </pre>
+
+        <h4>Additional Tools and integrations:</h4>
+        <pre>jQuery</pre>
+
+        <center><a class="btn btn-sm btn-info" href="{% url 'home' %}">To Expense Tracker</a></td>
+        </center>
+    </div>
+</div>
+
+{% endblock %}
