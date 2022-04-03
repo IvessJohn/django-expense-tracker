@@ -1,3 +1,4 @@
 .vscode/
 access_point.txt
 .env
+*pyc
